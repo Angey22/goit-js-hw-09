@@ -72,19 +72,6 @@ class Timer {
     }, 1000);
   }
 
-  stop() {
-    if (!this.isActiv) {
-      Notify.info('Timer already stopped');
-      return;
-    }
-
-    this.isActiv = false;
-    clearInterval(this.intervalId);
-
-    const time = this.convertMs(0);
-    this.updateTimerFace(time);
-  }
-
   convertMs(ms) {
     const second = 1000;
     const minute = second * 60;
