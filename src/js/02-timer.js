@@ -50,10 +50,8 @@ class Timer {
   }
 
   start() {
-    if (this.isActiv) {
-      Notify.info('Timer already started');
-      return;
-    }
+    refs.startBtn.disabled = true;
+    refs.dateInput.disabled = true;
 
     this.isActiv = true;
 
@@ -71,6 +69,17 @@ class Timer {
       }
     }, 1000);
   }
+    
+  stop() {
+    this.isActiv = false;
+    clearInterval(this.intervalId);
+
+    const time = this.convertMs(0);
+    this.updateTimerFace(time);
+    
+    refs.dateInput.disabled = false;
+  }
+  
 
   convertMs(ms) {
     const second = 1000;
